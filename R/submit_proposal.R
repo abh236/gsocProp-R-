@@ -15,13 +15,6 @@
 #' submit_proposal()
 #'
 submit_proposal <- function() {
-
-  deadline <- as.POSIXct("2026-03-31 23:59:59", tz = "UTC")
   current_time <- Sys.time()
-
-  if (current_time <= deadline) {
-    return(TRUE)
-  } else {
-    return(FALSE)
-  }
+  current_time <= .gs_env$deadline
 }

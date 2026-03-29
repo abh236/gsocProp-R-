@@ -18,9 +18,18 @@ This function simulates submitting a proposal to Google Summer of Code.
 It checks whether the current time is before or after the submission deadline.
 }
 \details{
-The submission deadline is 31st March 2026.
+The submission deadline is \Sexpr{format(as.POSIXct("2026-03-31 23:59:59", tz="UTC"), "\%d \%B \%Y")}.
+
+\Sexpr{
+deadline <- as.POSIXct("2026-03-31 23:59:59", tz="UTC")
+remaining <- difftime(deadline, Sys.time(), units = "days")
+if (remaining > 0) {
+paste("The deadline is in", round(remaining), "days.")
+} else {
+"The deadline has passed. Try next year!"
+}
+}
 }
 \examples{
 submit_proposal()
-
 }
